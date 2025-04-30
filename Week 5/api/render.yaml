@@ -2,9 +2,10 @@ services:
   - type: web
     name: iris-classifier
     runtime: python
-    buildCommand: ""
-    startCommand: gunicorn app:app
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
     envVars:
       - key: FLASK_ENV
         value: production
     plan: free
+    branch: main
