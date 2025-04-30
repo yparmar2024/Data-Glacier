@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import joblib
+import pandas as pd
 
 app = Flask(__name__)
 model = joblib.load("irisModel.pkl")
@@ -11,12 +12,12 @@ def home():
 @app.route("/predict", methods = ["POST"])
 def predict():
     data = request.get_json()
-    features = [[
+    features = pd.DataFrame([[
         data["sepal_length"],
         data["sepal_width"],
         data["petal_length"],
         data["petal_width"]
-    ]]
+    ]], columns = ["sepal_length", "sepal_width", "petal_length", "petal_width"])
     prediction = model.predict(features)[0]
     species = ["setosa", "versicolor", "virginica"]
     return jsonify({"prediction": species[prediction]})
