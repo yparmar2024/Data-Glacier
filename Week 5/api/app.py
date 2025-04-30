@@ -26,7 +26,7 @@ def predict():
     ]
     prediction = model.predict([features])[0]
     species = ["setosa", "versicolor", "virginica"]
-    return jsonify({"prediction": prediction[0]})
+    return jsonify({"prediction": prediction})
 
 # Run the app
 if __name__ == "__main__":
