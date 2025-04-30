@@ -9,10 +9,12 @@
         button { padding: 8px 15px; background: #4CAF50; color: white; border: none; }
         button:hover { background: #45a049; }
         #result { margin-top: 20px; font-weight: bold; }
+        #warning {color: orange; font-size: 14px; margin-top: 20px; }
     </style>
 </head>
 <body>
     <h1>Iris Species Predictor</h1>
+    <p id = "warning">Note: This web app is on a free tier, therefore the first prediction may take a bit longer due to server spin-up. Subsequent predictions should be faster.</p>
     <form id="predictionForm">
         <div class="input-group">
             <label>Sepal Length (cm):</label>
