@@ -12,12 +12,14 @@ def home():
 @app.route("/predict", methods = ["POST"])
 def predict():
     data = request.get_json()
+    
     features = pd.DataFrame([[
         data["sepal_length"],
         data["sepal_width"],
         data["petal_length"],
         data["petal_width"]
-    ]], columns = ["sepal_length", "sepal_width", "petal_length", "petal_width"])
+    ]], columns = ["sepal length (cm)", "sepal width (cm)", "petal length (cm)", "petal width (cm)"])
+
     prediction = model.predict(features)[0]
     species = ["setosa", "versicolor", "virginica"]
     return jsonify({"prediction": species[prediction]})
