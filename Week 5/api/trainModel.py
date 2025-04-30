@@ -1,6 +1,7 @@
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 import joblib
+import os
 
 def trainSaveModel():
     # Load iris dataset to be trained on
@@ -13,8 +14,9 @@ def trainSaveModel():
     model.fit(X, y)
 
     # Save model and let user know it's saved
-    joblib.dump(model, "api/irisModel.pkl")
-    print("Production model saved to api/irisModel.pkl")
+    modelPath = os.path.join(os.path.dirname(__file__), "irisModel.pkl")
+    joblib.dump(model, modelPath)
+    print("Production model saved to {modelPath}")
 
 if __name__ == "__main__":
     trainSaveModel()
